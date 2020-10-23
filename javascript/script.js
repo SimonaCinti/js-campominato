@@ -23,7 +23,7 @@ var playerNumber = parseInt(prompt('inserisci un numero da ' + minPc + ' a ' + m
 
 // Controllo numero inserito dal giocatore
 
-while ( (playerNumber < minPc) || (playerNumber > maxPc) ){
+while ( (playerNumber < minPc) || (playerNumber > maxPc) || isNaN(playerNumber) ){
     var playerNumber = parseInt(prompt('Numero non corretto,inserisci un numero da ' + minPc + ' a ' + maxPc));
 }
 
