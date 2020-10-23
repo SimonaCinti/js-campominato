@@ -23,6 +23,8 @@ var playerNumber;
 
 var playerLog = [];
 
+var punteggio = 0;
+
 // L'utente deve inserire un numero alla volta compreso nel range
 
 var playerNumber = parseInt(prompt('inserisci un numero da ' + minPc + ' a ' + maxPc ));
@@ -41,7 +43,15 @@ while (playerLog.includes(playerNumber)) {
 
 playerLog.push(playerNumber);
 
-console.log(playerLog);
+console.log(playerLog); //controllo array playerlog
+
+//Se il numero è presente nella lista dei numeri generati (bombe), la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
+
+if ( pcBomb.includes(playerNumber)){
+    console.log("mi dispiace, hai perso");
+} else {
+    punteggio++
+}
 
 /**
  * Generazione numeri random
