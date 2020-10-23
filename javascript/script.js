@@ -3,9 +3,9 @@
 
 // Variabili per calcolo numeri pc
 var minPc = 1;
-var maxPc = 30;
+var maxPc = 10;
 var pcBomb = [];
-var count = 16;
+var count = 1;
 
 //Inserimento numeri del pc
 while (pcBomb.length < count) {
@@ -48,6 +48,8 @@ while ((life == true) && (playerLog.length < (maxPc - count))) {
     //Se il numero è presente nella lista dei numeri generati (bombe), la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
 
     var life = checkBomb(playerNumber, pcBomb);
+
+    finalCheck(playerLog, maxPc, count);
 
     punteggio++;
 }
@@ -102,10 +104,18 @@ function checkBomb (num1, num2){
     if (num2.includes(num1)) {
         console.log('Mi dispiace, hai perso!');
         return false
-    } else {
+    } 
+    else {
         console.log('Bomba non trovata! Hai segnato un punto!');
         return true
     }
 }
+
+function finalCheck (num1, num2, num3){
+    if (num1.length < (num2 - num3)){
+        console.log('hai vinto il gioco!');
+    }
+}
+
 
 
