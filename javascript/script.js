@@ -25,31 +25,34 @@ var playerLog = [];
 
 var punteggio = 0;
 
-// L'utente deve inserire un numero alla volta compreso nel range
+var life = true;
 
-var playerNumber = parseInt(prompt('inserisci un numero da ' + minPc + ' a ' + maxPc ));
+while ((life == true) && (playerLog.length < (maxPc - count))) {
 
-// Controllo tipologia numero inserito dal giocatore
+    // L'utente deve inserire un numero alla volta compreso nel range
 
-check (playerNumber,minPc,maxPc);
+    var playerNumber = parseInt(prompt('inserisci un numero da ' + minPc + ' a ' + maxPc));
 
-// Controllo se il numero inserito è già stato usato dal giocatore
+    // Controllo tipologia numero inserito dal giocatore
 
-while (playerLog.includes(playerNumber)) {
-    var playerNumber = parseInt(prompt('Il numero è già stato inserito, inserisci un numero da ' + minPc + ' a ' + maxPc));
+    checkNumber(playerNumber, minPc, maxPc);
+
+    // Controllo se il numero inserito è già stato usato dal giocatore
+
+    checkLog(playerLog, playerNumber);
+
+    playerLog.push(playerNumber);
+
+    console.log(playerLog); //controllo array playerlog
+
+    //Se il numero è presente nella lista dei numeri generati (bombe), la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
+
+    var life = checkBomb(playerNumber, pcBomb);
+
+    punteggio++;
 }
 
-playerLog.push(playerNumber);
-
-console.log(playerLog); //controllo array playerlog
-
-//Se il numero è presente nella lista dei numeri generati (bombe), la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
-
-if ( pcBomb.includes(playerNumber)){
-    console.log("mi dispiace, hai perso");
-} else {
-    punteggio++
-}
+console.log(punteggio);
 
 /**
  * Generazione numeri random
@@ -62,11 +65,41 @@ function random (min, max){
     return risultato;
 }
 
-function check (num1, num2, num3){
+/**
+ * Check del tipo di numero
+ * @param {number} num1  numero giocatore
+ * @param {number} num2  numero minimo pc
+ * @param {number} num3  numero massimo pc
+ */
+
+function checkNumber (num1, num2, num3){
 
     while ((num1 < num2) || (num1 > num3) || isNaN(num1)) {
         num1 = parseInt(prompt('Numero non corretto,inserisci un numero da ' + minPc + ' a ' + maxPc));
         return num1;
     }
-
 }
+
+/**
+ * Check del log del player
+ * @param {number} num1 
+ * @param {number} num2 
+ */
+
+function checkLog (num1,num2){
+    while (num1.includes(num2)) {
+        var num2 = parseInt(prompt('Il numero è già stato inserito, inserisci un numero da ' + minPc + ' a ' + maxPc));
+    }
+}
+
+function checkBomb (num1, num2){
+    if (num2.includes(num1)) {
+        console.log('Mi dispiace, hai perso!');
+        return false
+    } else {
+        console.log('Bomba non trovata! Hai segnato un punto!');
+        return true
+    }
+}
+
+
