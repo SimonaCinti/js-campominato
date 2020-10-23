@@ -1,11 +1,9 @@
 
 //TODO Il computer deve generare 16 numeri casuali (bombe) tra 1 e 100. I numeri non possono essere duplicati 
-// Variabili per calcolo numeri pc - Difficoltà default
-var minPc = 1;
-var maxPc = 100;
-var pcBomb = [];
-var count = 16;
 
+// Variabili per calcolo numeri pc e selezione livello di difficoltà
+
+var pcBomb = [];
 
 var level = prompt("Seleziona difficoltà \nFacile \nMedio \nDifficile \nTest").toLowerCase().trim();
 
@@ -13,28 +11,24 @@ switch (level) {
     case "test":
         var minPc = 1;
         var maxPc = 5;
-        var pcBomb = [];
         var count = 1;
         break;
 
     case "facile":
         var minPc = 1;
         var maxPc = 100;
-        var pcBomb = [];
         var count = 16;
         break;
 
     case "medio":
         var minPc = 1;
         var maxPc = 80;
-        var pcBomb = [];
         var count = 16;
         break;
 
     case "difficile":
         var minPc = 1;
         var maxPc = 50;
-        var pcBomb = [];
         var count = 16; 
         break;
 }
@@ -102,7 +96,7 @@ if (playerLog.length == (maxPc - count)) {
 // FUNZIONI //
 
 /**
- * Generazione numeri random
+ * Generazione numeri random per il computer
  * @param {number} min  numero random minimo 
  * @param {number} max  numero random massimo
  */
@@ -113,7 +107,7 @@ function random (min, max){
 }
 
 /**
- * Check del tipo di numero
+ * Check del tipo di numero inserito se valido
  * @param {number} num1  numero giocatore
  * @param {number} num2  numero minimo pc
  * @param {number} num3  numero massimo pc
@@ -128,7 +122,7 @@ function checkNumber (num1, num2, num3){
 }
 
 /**
- * Check del log del player
+ * Check se il giocatore ha inserito già il numero
  * @param {number} num1 
  * @param {number} num2 
  */
@@ -141,7 +135,7 @@ function checkLog (num1,num2){
 }
 
 /**
- * Check della bomba
+ * Check se il giocatore ha preso la bomba
  * @param {number} num1 
  * @param {number} num2 
  */
