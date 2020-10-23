@@ -31,9 +31,7 @@ var playerNumber = parseInt(prompt('inserisci un numero da ' + minPc + ' a ' + m
 
 // Controllo tipologia numero inserito dal giocatore
 
-while ( (playerNumber < minPc) || (playerNumber > maxPc) || isNaN(playerNumber) ){
-    var playerNumber = parseInt(prompt('Numero non corretto,inserisci un numero da ' + minPc + ' a ' + maxPc));
-}
+check (playerNumber,minPc,maxPc);
 
 // Controllo se il numero inserito è già stato usato dal giocatore
 
@@ -62,4 +60,13 @@ if ( pcBomb.includes(playerNumber)){
 function random (min, max){
     var risultato = Math.floor( Math.random() * (max - min +1) + min);
     return risultato;
+}
+
+function check (num1, num2, num3){
+
+    while ((num1 < num2) || (num1 > num3) || isNaN(num1)) {
+        num1 = parseInt(prompt('Numero non corretto,inserisci un numero da ' + minPc + ' a ' + maxPc));
+        return num1;
+    }
+
 }
