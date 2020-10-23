@@ -17,15 +17,31 @@ while (pcBomb.length < count) {
 
 console.log(pcBomb);
 
+// Variabili per utente
+
+var playerNumber;
+
+var playerLog = [];
+
 // L'utente deve inserire un numero alla volta compreso nel range
 
 var playerNumber = parseInt(prompt('inserisci un numero da ' + minPc + ' a ' + maxPc ));
 
-// Controllo numero inserito dal giocatore
+// Controllo tipologia numero inserito dal giocatore
 
 while ( (playerNumber < minPc) || (playerNumber > maxPc) || isNaN(playerNumber) ){
     var playerNumber = parseInt(prompt('Numero non corretto,inserisci un numero da ' + minPc + ' a ' + maxPc));
 }
+
+// Controllo se il numero inserito è già stato usato dal giocatore
+
+while (playerLog.includes(playerNumber)) {
+    var playerNumber = parseInt(prompt('Il numero è già stato inserito, inserisci un numero da ' + minPc + ' a ' + maxPc));
+}
+
+playerLog.push(playerNumber);
+
+console.log(playerLog);
 
 /**
  * Generazione numeri random
