@@ -49,8 +49,9 @@ while ((life == true) && (playerLog.length < (maxPc - count))) {
 
     var life = checkBomb(playerNumber, pcBomb);
 
-    punteggio++;
-
+    if (life == true) {
+        punteggio++;
+    }
 }
 
 console.log("il totale da te fatto è " + punteggio + " punti!");
