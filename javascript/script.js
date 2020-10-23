@@ -52,7 +52,7 @@ while ((life == true) && (playerLog.length < (maxPc - count))) {
     punteggio++;
 }
 
-console.log("il totale da te fatto è " + punteggio);
+console.log("il totale da te fatto è " + punteggio + " punti!");
 
 /**
  * Generazione numeri random
@@ -91,6 +91,12 @@ function checkLog (num1,num2){
         var num2 = parseInt(prompt('Il numero è già stato inserito, inserisci un numero da ' + minPc + ' a ' + maxPc));
     }
 }
+
+/**
+ * Check della bomba
+ * @param {number} num1 
+ * @param {number} num2 
+ */
 
 function checkBomb (num1, num2){
     if (num2.includes(num1)) {
