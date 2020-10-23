@@ -1,11 +1,11 @@
 
 //TODO Il computer deve generare 16 numeri casuali (bombe) tra 1 e 100. I numeri non possono essere duplicati 
 
-// Variabili per calcolo numeri pc
+// Variabili per calcolo numeri pc - Difficoltà default
 var minPc = 1;
-var maxPc = 10;
+var maxPc = 100;
 var pcBomb = [];
-var count = 5;
+var count = 16;
 
 //Inserimento numeri del pc
 while (pcBomb.length < count) {
@@ -20,12 +20,11 @@ console.log(pcBomb);
 // Variabili per utente
 
 var playerNumber;
-
 var playerLog = [];
-
 var punteggio = 0;
-
 var life = true;
+
+// Inizio del gioco:
 
 while ((life == true) && (playerLog.length < (maxPc - count))) {
 
@@ -33,17 +32,18 @@ while ((life == true) && (playerLog.length < (maxPc - count))) {
 
     var playerNumber = parseInt(prompt('inserisci un numero da ' + minPc + ' a ' + maxPc));
 
-    // Controllo tipologia numero inserito dal giocatore
+    // Controllo se il numero inserito dal giocatore è un numero valido
 
-    checkNumber(playerNumber, minPc, maxPc);
+    playerNumber= checkNumber(playerNumber, minPc, maxPc);
 
-    // Controllo se il numero inserito è già stato usato dal giocatore
+    
+    // Controllo se il numero inserito è già stato usato dal giocatore in precedenza
 
-    checkLog(playerLog, playerNumber);
+    playerNumber= checkLog(playerLog, playerNumber);
 
     playerLog.push(playerNumber);
 
-    console.log(playerLog); //controllo array playerlog
+    console.log("Numeri inseriti dall'utente ",playerLog); //controllo array playerlog
 
     //Se il numero è presente nella lista dei numeri generati (bombe), la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
 
@@ -54,10 +54,14 @@ while ((life == true) && (playerLog.length < (maxPc - count))) {
     }
 }
 
+// Fine del gioco: calcolo dei punti e se il giocatore ha vinto
+
 console.log("il totale da te fatto è " + punteggio + " punti!");
 
 if (playerLog.length == (maxPc - count)) {
     console.log("Hai vinto il gioco!");
+} else {
+    console.log("Hai perso, aggiorna la pagina per giocare ancora!");
 }
 
 
@@ -85,8 +89,8 @@ function checkNumber (num1, num2, num3){
 
     while ((num1 < num2) || (num1 > num3) || isNaN(num1)) {
         num1 = parseInt(prompt('Numero non corretto,inserisci un numero da ' + minPc + ' a ' + maxPc));
-        return num1;
     }
+    return num1;
 }
 
 /**
@@ -99,6 +103,7 @@ function checkLog (num1,num2){
     while (num1.includes(num2)) {
         var num2 = parseInt(prompt('Il numero è già stato inserito, inserisci un numero da ' + minPc + ' a ' + maxPc));
     }
+    return num2;
 }
 
 /**
