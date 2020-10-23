@@ -7,6 +7,7 @@ var maxPc = 30;
 var pcBomb = [];
 var count = 16;
 
+//Inserimento numeri del pc
 while (pcBomb.length < count) {
     var pcNumber = random (minPc, maxPc);
     if (! pcBomb.includes(pcNumber)) {
@@ -15,6 +16,16 @@ while (pcBomb.length < count) {
 }
 
 console.log(pcBomb);
+
+// L'utente deve inserire un numero alla volta compreso nel range
+
+var playerNumber = parseInt(prompt('inserisci un numero da ' + minPc + ' a ' + maxPc ));
+
+// Controllo numero inserito dal giocatore
+
+while ( (playerNumber < minPc) || (playerNumber > maxPc) ){
+    var playerNumber = parseInt(prompt('Numero non corretto,inserisci un numero da ' + minPc + ' a ' + maxPc));
+}
 
 /**
  * Generazione numeri random
