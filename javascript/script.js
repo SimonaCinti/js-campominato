@@ -5,7 +5,7 @@
 var minPc = 1;
 var maxPc = 10;
 var pcBomb = [];
-var count = 1;
+var count = 2;
 
 //Inserimento numeri del pc
 while (pcBomb.length < count) {
@@ -49,12 +49,16 @@ while ((life == true) && (playerLog.length < (maxPc - count))) {
 
     var life = checkBomb(playerNumber, pcBomb);
 
-    finalCheck(playerLog, maxPc, count);
-
     punteggio++;
+
 }
 
 console.log("il totale da te fatto è " + punteggio + " punti!");
+
+if (playerLog.length = (maxPc - count)) {
+    console.log("Hai vinto il gioco!");
+}
+
 
 /**
  * Generazione numeri random
@@ -111,11 +115,7 @@ function checkBomb (num1, num2){
     }
 }
 
-function finalCheck (num1, num2, num3){
-    if (num1.length < (num2 - num3)){
-        console.log('hai vinto il gioco!');
-    }
-}
+
 
 
 
