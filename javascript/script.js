@@ -52,7 +52,7 @@ while ((life == true) && (playerLog.length < (maxPc - count))) {
     punteggio++;
 }
 
-console.log(punteggio);
+console.log("il totale da te fatto è " + punteggio);
 
 /**
  * Generazione numeri random
