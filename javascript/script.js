@@ -1,11 +1,45 @@
 
 //TODO Il computer deve generare 16 numeri casuali (bombe) tra 1 e 100. I numeri non possono essere duplicati 
-
 // Variabili per calcolo numeri pc - Difficoltà default
 var minPc = 1;
 var maxPc = 100;
 var pcBomb = [];
 var count = 16;
+
+
+var level = prompt("Seleziona difficoltà \nFacile \nMedio \nDifficile \nTest").toLowerCase().trim();
+
+switch (level) {
+    case "test":
+        var minPc = 1;
+        var maxPc = 5;
+        var pcBomb = [];
+        var count = 1;
+        break;
+
+    case "facile":
+        var minPc = 1;
+        var maxPc = 100;
+        var pcBomb = [];
+        var count = 16;
+        break;
+
+    case "medio":
+        var minPc = 1;
+        var maxPc = 80;
+        var pcBomb = [];
+        var count = 16;
+        break;
+
+    case "difficile":
+        var minPc = 1;
+        var maxPc = 50;
+        var pcBomb = [];
+        var count = 16; 
+        break;
+}
+
+console.log('livello di difficoltà ', level);
 
 //Inserimento numeri del pc
 while (pcBomb.length < count) {
